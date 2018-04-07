@@ -3,31 +3,30 @@ package edu.handong.see.java.lab09;
  * This class declare using members and use SalesReporter class</br>
  * This class has public method and void method</br>
  * Public method has double and string variable.
- * 
  * @author MG
  *
  */
 
-public class SalesAssociate {
+public class SalesAssociate {	// declare public class 
 	
-		private String name;
-		private double sales;
+		private String name;	//declare private String named by name
+		private double sales;	//declare private double named by sales
 
-		public String Getname()
+		public String Getname()	//declare public method
 		{
-			return name;
+			return name;	//return name
 		}
 
-		public double Getsales() {
-			return sales;
+		public double Getsales() {	//declare public method
+			return sales;	//return sales
 		}
-		public void Setname(String name)
+		public void Setname(String name)	//declare public void method
 		{
-			this.name=name;
+			this.name=name;	//this.name call name 
 		}
-		public void Setsales(double sales)
+		public void Setsales(double sales)	//declare public void method
 		{
-			this.sales=sales;
+			this.sales=sales; //this.sales call sales
 		}
 	}
 
