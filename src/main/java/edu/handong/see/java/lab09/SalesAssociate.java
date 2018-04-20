@@ -1,7 +1,7 @@
 package edu.handong.see.java.lab09;
 /**
- * This class declare using members and use SalesReporter class</br>
- * This class has public method and void method</br>
+ * This class declare using members and use SalesReporter class
+ * This class has public method and void method
  * Public method has double and string variable.
  * @author MG
  *

@@ -1,13 +1,14 @@
 package edu.handong.see.java.lab09;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class SalesReporter {	//declare public class
 
 	private double highestSales;	//declare private double member
 	private double averageSales;	//declare private double member
-	private SalesAssociate[] team;	//declare private array member
-	private int numberOfAssociate;	//declare private integer member
+	private ArrayList<SalesAssociate>team=new ArrayList<SalesAssociate>();	//declare private array member
+
 
 	public static void main(String[] args) {	//declare public void main method
 
@@ -18,33 +19,37 @@ public class SalesReporter {	//declare public class
 	}
 
 	public void getData() {	//declare public void method named by getData
-		System.out.println("Enter number of sales associates:");	//printout Enter number of sales associates:
 		Scanner mykeyboard=new Scanner(System.in);	// data can be entered from the keyboard using
+		int i=0;
+		boolean done=false;
 
-		int numberOfAssociate = mykeyboard.nextInt();	//numberOfAssociate can work by using keyboard
-		team = new SalesAssociate[numberOfAssociate];	//team equal SalesAsoociate class limited numberOfAssoicate
+		while(!done) {
 
-		for(int i=0; i<numberOfAssociate;i++) {	//if i equal zero and i less than numberOfAssociate, i can increase 1
-			System.out.println("Enter data for associate number"+(i+1));	//printout Enter data for associate number i+1
+			System.out.println("Enter data for associate number"+(i));
+			i++;
 			System.out.print("Enter name of sales associate:");	//printout Enter name of sales associate: 
 			mykeyboard.nextLine();	//reads the rest of the current keyboard input line and returns the characters read
-			String name = mykeyboard.nextLine();	//name has that reads the rest of the current keyboard input line and returns the characters read
+			String name = mykeyboard.nextLine();
+			SalesAssociate s= new SalesAssociate();
+			team.add(s);
+			s.Setname(name);
 			System.out.print("Enter associate's sales:");	//printout Enter associate's sales:
 			double sales= mykeyboard.nextDouble();	//returns the next keyboard input as a value of type double
-
-			team[i]=new SalesAssociate();	//team[i] equal SalesAssociate class
-			team[i].Setname(name);	//team[i] call Setname method
-			team[i].Setsales(sales);	//team [i] call Setsales method
+			s.Setsales(sales);			
+			System.out.print ("More items for the list? ");
+			  String ans = mykeyboard.nextLine ();
+	            if (!ans.equalsIgnoreCase ("yes"))
+	                done = true;
 		}
 	}
 
 	public void computeStats() {	//declare public void method named by computeStats
 		double sum=0;	//declare double sum is zero
-		for(int i=0;i<team.length;i++)	//if i is zero and i less than team.length, i increase 1
+		for(SalesAssociate s:team)	//if i is zero and i less than team.length, i increase 1
 		{
-			sum=sum+team[i].Getsales();	//sum equal sum plus array team[i]'s Getsales method
+			sum=sum+s.Getsales();	//sum equal sum plus array team[i]'s Getsales method
 		}
-		averageSales=sum/team.length;	//averageSales equal sum divide team.lemgth
+		averageSales=sum/team.size();	//averageSales equal sum divide team.lemgth
 
 		double highestSales=0;	//declare double highestSales equal zero
 		for(int i=0;i<team.length;i++)	//if i is zero and i less than team.length, i increase 1
@@ -79,4 +84,3 @@ public class SalesReporter {	//declare public class
 		}
 	}
 }
-
