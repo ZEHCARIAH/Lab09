@@ -1,13 +1,13 @@
 package edu.handong.see.java.lab09;
 
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.Scanner;	//import Scanner function
+import java.util.ArrayList;	//import ArrayList function
 
 public class SalesReporter {	//declare public class
 
 	private double highestSales;	//declare private double member
 	private double averageSales;	//declare private double member
-	private ArrayList<SalesAssociate>team=new ArrayList<SalesAssociate>();	//declare private array member
+	private ArrayList<SalesAssociate>team=new ArrayList<SalesAssociate>();	//declare ArrayList and its type is SalesAssociate and declare ArrayList;
 
 
 	public static void main(String[] args) {	//declare public void main method
@@ -20,42 +20,43 @@ public class SalesReporter {	//declare public class
 
 	public void getData() {	//declare public void method named by getData
 		Scanner mykeyboard=new Scanner(System.in);	// data can be entered from the keyboard using
-		int i=0;
-		boolean done=false;
+		int i=1	//declare i has 1
+				;
+		boolean done=false;	//declare boolean value named done eqaul false
 
-		while(!done) {
+		while(!done) {	//if done does not equal 
 
-			System.out.println("Enter data for associate number"+(i));
-			i++;
+			System.out.println("Enter data for associate number"+(i));	//printout(Enter data for associate number"+(i))
+			i++;	//increase 1
 			System.out.print("Enter name of sales associate:");	//printout Enter name of sales associate: 
-			mykeyboard.nextLine();	//reads the rest of the current keyboard input line and returns the characters read
-			String name = mykeyboard.nextLine();
-			SalesAssociate s= new SalesAssociate();
-			team.add(s);
-			s.Setname(name);
+			String name = mykeyboard.nextLine();	//name can type by using keyboard
+			SalesAssociate s= new SalesAssociate();	//Arraylist's salesAsoociate value equal s 
+			team.add(s);	//team add SalesAssoicate s
+			s.Setname(name);	//s has name function
 			System.out.print("Enter associate's sales:");	//printout Enter associate's sales:
 			double sales= mykeyboard.nextDouble();	//returns the next keyboard input as a value of type double
-			s.Setsales(sales);			
-			System.out.print ("More items for the list? ");
-			  String ans = mykeyboard.nextLine ();
-	            if (!ans.equalsIgnoreCase ("yes"))
-	                done = true;
+			s.Setsales(sales);	//s has sales function
+			System.out.print ("More items for the list? ");	//printout More items for the list?
+			String ans = mykeyboard.nextLine ();	//ans can type by using keyboard and go next
+			mykeyboard.nextLine();	//keyboard go next line
+			if (!ans.equalsIgnoreCase ("yes"))	//if ans is not "yes"comment, it can process
+				done = true;	//boole done is eaul ture
 		}
 	}
 
 	public void computeStats() {	//declare public void method named by computeStats
 		double sum=0;	//declare double sum is zero
-		for(SalesAssociate s:team)	//if i is zero and i less than team.length, i increase 1
+		for(SalesAssociate s:team)	//s has team limit 
 		{
-			sum=sum+s.Getsales();	//sum equal sum plus array team[i]'s Getsales method
+			sum=sum+s.Getsales();	//sum equal sum plus s class's GetSales method
 		}
-		averageSales=sum/team.size();	//averageSales equal sum divide team.lemgth
+		averageSales=sum/team.size();	//averageSales equal sum divide team.size
 
 		double highestSales=0;	//declare double highestSales equal zero
-		for(int i=0;i<team.length;i++)	//if i is zero and i less than team.length, i increase 1
+		for(SalesAssociate s:team)	//s has team limit 
 		{
-			if(highestSales<team[i].Getsales())	//if highestSales less array team[i]'s Getsales method
-				highestSales=team[i].Getsales();	//highest equal array team[i]'s Getsales method
+			if(highestSales<s.Getsales())	//if highestSales less  s.Getsales method
+				highestSales=s.Getsales();	//highest equal s.Getsales method
 		}
 		this.highestSales=highestSales;	//this.highestSales call highestSales 
 	}
@@ -66,20 +67,20 @@ public class SalesReporter {	//declare public class
 
 
 		System.out.println("The following had the highest sales:");	//printout The following had the highest sales:
-		for(int i=0;i<team.length;i++)	//if i is zero and i less than tema.length, i increase 1
+		for(SalesAssociate s: team)	//s has team limit 
 		{
-			if(highestSales==team[i].Getsales()) {	//if highestSales euqal array team[i]'s Getsales method
-				System.out.println("Name: "+team[i].Getname());	//printout Name: "+team[i].Getname()
-				System.out.println("Sales: $"+team[i].Getsales());	//printout Sales: $"+team[i].Getsales()
-				System.out.println("$"+((team[i].Getsales())-(double)averageSales)+" above the average");	//printout difference value of Getsales and averageSales
+			if(highestSales==s.Getsales()) {	//if highestSales equal s.GetSales()
+				System.out.println("Name: "+s.Getname());	//printout Name: "+s.Getname()
+				System.out.println("Sales: $"+s.Getsales());	//printout Sales: $"+s.Getsales()
+				System.out.println("$"+((s.Getsales())-(double)averageSales)+" above the average");	//printout difference value of Getsales and averageSales
 			}
 		}
-		for(int i=0;i<team.length;i++)	//if i is zero and i less than tema.length, i increase 1
+		for(SalesAssociate s: team)	//s has team limit 
 		{
-			if(highestSales!=team[i].Getsales()) {	//if highestSales euqal array team[i]'s Getsales method
-				System.out.println("Name: "+team[i].Getname());	//printout Name: "+team[i].Getname()
-				System.out.println("Sales: $"+team[i].Getsales());	//printout Sales: $"+team[i].Getsales()
-				System.out.println("$"+((double)averageSales-(team[i].Getsales())+" below the average"));	//printout difference value of Getsales and averageSales
+			if(highestSales!=s.Getsales()) {	//if highestSales equal s.GetSales()
+				System.out.println("Name: "+s.Getname());	//printout Name: "+s.Getname()
+				System.out.println("Sales: $"+s.Getsales());	//printout Sales: $"+s.Getsales()
+				System.out.println("$"+((double)averageSales-(s.Getsales())+" below the average"));	//printout difference value of Getsales and averageSales
 			}
 		}
 	}
